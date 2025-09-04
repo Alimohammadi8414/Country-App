@@ -16,12 +16,26 @@ class AppColors {
 // dark theme
 
 ThemeData darkheme = ThemeData(
+  colorScheme: ColorScheme(
+    brightness: Brightness.dark,
+    primary: AppColors.darkBlue,
+    onPrimary: AppColors.white,
+    secondary: AppColors.darkBlue,
+    onSecondary: AppColors.white,
+    error: Colors.red,
+    onError: Colors.white,
+    surface: AppColors.veryDarkBlueBg,
+    onSurface: AppColors.white,
+  ),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(iconColor: AppColors.white),
   ),
   appBarTheme: AppBarTheme(backgroundColor: AppColors.darkBlue),
 
   dropdownMenuTheme: DropdownMenuThemeData(
+    menuStyle: MenuStyle(
+      backgroundColor: WidgetStatePropertyAll<Color>(AppColors.darkBlue),
+    ),
     textStyle: TextStyle(color: AppColors.white),
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(8.0)),
@@ -44,6 +58,17 @@ ThemeData darkheme = ThemeData(
 // light theme
 
 ThemeData lighttheme = ThemeData(
+  colorScheme: ColorScheme(
+    brightness: Brightness.light,
+    primary: AppColors.whiteLight,
+    onPrimary: AppColors.veryDarkBlueText,
+    secondary: AppColors.whiteLight,
+    onSecondary: AppColors.veryDarkBlueText,
+    error: Colors.red,
+    onError: Colors.white,
+    surface: AppColors.veryLightGray,
+    onSurface: AppColors.veryDarkBlueText,
+  ),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(iconColor: AppColors.veryDarkBlueText),
   ),

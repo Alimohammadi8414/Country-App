@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Spacer(),
           TextButton(
             style: TextButton.styleFrom(
-              foregroundColor: AppColors.darkBlue,
+              foregroundColor: Theme.of(context).colorScheme.onPrimary,
               iconSize: 20,
             ),
             onPressed: () {
@@ -90,10 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Form(
                       key: formkey,
                       child: Material(
-                        color:
-                            isthemDark.value
-                                ? AppColors.darkBlue
-                                : AppColors.whiteLight,
+                        color: Theme.of(context).colorScheme.primary,
                         borderRadius: BorderRadius.circular(8),
                         elevation: 5,
                         child: TextFormField(
@@ -148,13 +145,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         width: 190,
                         alignment: Alignment.center,
                         child: Material(
-                          color:
-                              isthemDark.value
-                                  ? AppColors.darkBlue
-                                  : AppColors.whiteLight,
+                          color: Theme.of(context).colorScheme.primary,
                           elevation: 3,
                           borderRadius: BorderRadius.circular(8),
                           child: DropdownButton(
+                            dropdownColor:
+                                Theme.of(context).colorScheme.primary,
                             items: [
                               DropdownMenuItem(
                                 value: 'All',
@@ -270,15 +266,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
 
                             elevation: 20,
+
                             borderRadius: BorderRadius.circular(8.0),
                             icon: Icon(
                               Icons.keyboard_arrow_down_outlined,
                               size: 20,
                             ),
-                            dropdownColor:
-                                isthemDark.value
-                                    ? AppColors.darkBlue
-                                    : AppColors.whiteLight,
+
                             style: Theme.of(context).textTheme.bodyMedium!
                                 .copyWith(fontWeight: FontWeight.w600),
                             alignment: Alignment.center,
@@ -324,9 +318,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Container(
                                     decoration: BoxDecoration(
                                       color:
-                                          isthemDark.value
-                                              ? AppColors.darkBlue
-                                              : AppColors.whiteLight,
+                                          Theme.of(context).colorScheme.primary,
                                       borderRadius: BorderRadius.circular(12),
                                     ),
                                     padding: EdgeInsets.symmetric(

@@ -89,10 +89,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       children: [
                         Icon(
                           Icons.arrow_back,
-                          color:
-                              isthemDark.value
-                                  ? AppColors.whiteLight
-                                  : AppColors.darkGray,
+                          color: Theme.of(context).colorScheme.onPrimary,
                         ),
                         SizedBox(width: 5),
                         Text(
@@ -116,10 +113,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
               Container(
                 decoration: BoxDecoration(
-                  color:
-                      isthemDark.value
-                          ? AppColors.veryDarkBlueBg
-                          : AppColors.veryLightGray,
+                  color: Theme.of(context).colorScheme.surface,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 padding: EdgeInsets.symmetric(vertical: 40),

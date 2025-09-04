@@ -48,5 +48,4 @@ class Country {
       population: json["population"] ?? 0,
     );
   }
-
- 
+}
