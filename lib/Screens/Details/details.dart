@@ -1,5 +1,5 @@
 import 'package:arz8/main.dart';
-import 'package:arz8/models/country.dart';
+import 'package:arz8/model/country.dart';
 import 'package:arz8/services/methods.dart';
 import 'package:arz8/theme.dart';
 import 'package:flutter/material.dart';

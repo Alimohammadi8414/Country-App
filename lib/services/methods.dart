@@ -1,5 +1,5 @@
 import 'package:arz8/Screens/Home/home.dart';
-import 'package:arz8/models/country.dart';
+import 'package:arz8/model/country.dart';
 import 'package:arz8/data/http_client.dart';
 
 class Homemethods {

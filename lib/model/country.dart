@@ -49,18 +49,4 @@ class Country {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      "name": {"common": name},
-      "tld": tld,
-      "flags": {"png": flagPng, "svg": flagSvg},
-      "currencies": currencies,
-      "capital": capital,
-      "region": region,
-      "subregion": subregion,
-      "languages": languages,
-      "borders": borders,
-      "population": population,
-    };
-  }
-}
+ 
