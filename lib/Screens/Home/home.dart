@@ -2,8 +2,8 @@ import 'package:arz8/Screens/Details/details.dart';
 import 'package:arz8/services/methods.dart';
 import 'package:arz8/main.dart';
 
-import 'package:arz8/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:persian_number_utility/persian_number_utility.dart';
 
 ValueNotifier<int> pagestarted = ValueNotifier(0);
 
@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Material(
                         color: Theme.of(context).colorScheme.primary,
                         borderRadius: BorderRadius.circular(8),
-                        elevation: 5,
+                        elevation: 3,
                         child: TextFormField(
                           onChanged: (value) {
                             if (value.trim().isEmpty) {
@@ -141,9 +141,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Container(
+                        margin: EdgeInsets.only(left: 15),
                         height: 60,
                         width: 190,
-                        alignment: Alignment.center,
+                        alignment: Alignment.centerLeft,
                         child: Material(
                           color: Theme.of(context).colorScheme.primary,
                           elevation: 3,
@@ -254,7 +255,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 }
                               });
                             },
-
                             hint: Text(
                               'Filter by region  ',
                               style: Theme.of(
@@ -264,28 +264,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                 fontSize: 14,
                               ),
                             ),
-
-                            elevation: 20,
-
-                            borderRadius: BorderRadius.circular(8.0),
                             icon: Icon(
                               Icons.keyboard_arrow_down_outlined,
                               size: 20,
                             ),
-
                             style: Theme.of(context).textTheme.bodyMedium!
                                 .copyWith(fontWeight: FontWeight.w600),
-                            alignment: Alignment.center,
-                            menuWidth: 250,
+                            menuWidth: 200,
                             padding: EdgeInsets.symmetric(
-                              horizontal: 20,
+                              horizontal: 15,
                               vertical: 10,
                             ),
+                            underline: SizedBox.shrink(),
                             isExpanded: true,
                           ),
                         ),
                       ),
                     ),
+                    SizedBox(height: 10),
 
                     Expanded(
                       child: ListView.builder(
@@ -358,7 +354,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                             SizedBox(width: 10),
 
                                             Text(
-                                              country.population!.toString(),
+                                              country.population!
+                                                  .toString()
+                                                  .seRagham(),
                                               style: Theme.of(
                                                 context,
                                               ).textTheme.bodyMedium!.copyWith(
@@ -408,7 +406,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             SizedBox(width: 10),
 
                                             Text(
-                                              country.capital!.first,
+                                              country.capital!.join(', '),
                                               style: Theme.of(
                                                 context,
                                               ).textTheme.bodyMedium!.copyWith(

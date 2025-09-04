@@ -244,7 +244,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         ),
                         SizedBox(width: 10),
                         Text(
-                          widget.countryDetail.capital!.first,
+                          widget.countryDetail.capital!.join(', '),
                           style: Theme.of(
                             context,
                           ).textTheme.bodyMedium!.copyWith(
