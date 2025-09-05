@@ -107,6 +107,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           BlocProvider.of<HomeblocBloc>(
                             context,
                           ).add(HomeStarted(CountryModel()));
+                          setState(() {
+                            dropdownvalue = null;
+                          });
                         }
                       },
                       validator: (value) {
