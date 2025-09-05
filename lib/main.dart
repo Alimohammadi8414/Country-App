@@ -1,7 +1,10 @@
+import 'package:arz8/Screens/Details/bloc/detail_screen_bloc.dart';
+import 'package:arz8/Screens/Home/bloc/homebloc_bloc.dart';
 import 'package:arz8/Screens/Home/home.dart';
 import 'package:arz8/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 late SharedPreferences sharedPreferences;
@@ -15,7 +18,15 @@ void main() async {
   sharedPreferences = await SharedPreferences.getInstance();
   isthemDark.value = sharedPreferences.getBool('isdark') ?? false;
 
-  runApp(MyApp());
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => HomeblocBloc()),
+        BlocProvider(create: (context) => DetailScreenBloc()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

@@ -1,4 +1,4 @@
-class Country {
+class CountryModel {
   final String? name;
   final List<String>? tld;
   final String? flagPng;
@@ -11,7 +11,7 @@ class Country {
   final List<String>? borders;
   final int? population;
 
-  Country({
+  CountryModel({
     this.name,
     this.tld,
     this.flagPng,
@@ -25,8 +25,8 @@ class Country {
     this.population,
   });
 
-  factory Country.fromJson(Map<String, dynamic> json) {
-    return Country(
+  factory CountryModel.fromJson(Map<String, dynamic> json) {
+    return CountryModel(
       name: json['name']['common'],
       tld: json["tld"] != null ? List<String>.from(json["tld"]) : [],
       flagPng: json["flags"]["png"] ?? "",
