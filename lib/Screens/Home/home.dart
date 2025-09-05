@@ -97,6 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(8),
                     elevation: 3,
                     child: TextFormField(
+                      textInputAction: TextInputAction.search,
                       cursorErrorColor: Theme.of(context).colorScheme.error,
                       cursorColor:
                           isthemDark.value
@@ -110,6 +111,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           setState(() {
                             dropdownvalue = null;
                           });
+                        }
+                      },
+                      onFieldSubmitted: (value) {
+                        if (formkey.currentState!.validate()) {
+                          BlocProvider.of<HomeblocBloc>(
+                            context,
+                          ).add(SearchByName(textColntroller.text));
                         }
                       },
                       validator: (value) {
