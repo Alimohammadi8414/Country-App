@@ -418,7 +418,15 @@ class _DetailsScreenState extends State<DetailsScreen> {
               ),
             );
           } else if (state is DetialScreenError) {
-            Center(child: Text('Something Went Wrong'));
+            Center(
+              child: Text(
+                state.error,
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+            );
           }
           return Center(child: CupertinoActivityIndicator());
         },

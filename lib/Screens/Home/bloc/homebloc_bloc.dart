@@ -1,6 +1,7 @@
 import 'package:arz8/model/country.dart';
 import 'package:arz8/services/methods.dart';
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
 
 part 'homebloc_event.dart';
@@ -14,7 +15,11 @@ class HomeblocBloc extends Bloc<HomeblocEvent, HomeblocState> {
         try {
           emit(Homesuccess(await Services.getcountry()));
         } catch (e) {
-          emit(HomeError('oopps Something Went Wrong'));
+          if (e is DioException) {
+            emit(HomeError(e.message ?? "Unknown error"));
+          } else {
+            emit(HomeError(e.toString()));
+          }
         }
       } else if (event is DropdownClicked) {
         emit(Homeloading());
@@ -22,14 +27,22 @@ class HomeblocBloc extends Bloc<HomeblocEvent, HomeblocState> {
         try {
           emit(Homesuccess(await Services.dropdown(event.slectedvalue)));
         } catch (e) {
-          emit(HomeError('oopps Something Went Wrong'));
+          if (e is DioException) {
+            emit(HomeError(e.message ?? "Unknown error"));
+          } else {
+            emit(HomeError(e.toString()));
+          }
         }
       } else if (event is SearchByName) {
         emit(Homeloading());
         try {
           emit(Homesuccess(await Services.getcountrybyname(event.name)));
         } catch (e) {
-          emit(HomeError('oopps Something Went Wrong'));
+          if (e is DioException) {
+            emit(HomeError(e.message ?? "Unknown error"));
+          } else {
+            emit(HomeError(e.toString()));
+          }
         }
       }
     });

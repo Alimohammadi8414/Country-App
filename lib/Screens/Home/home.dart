@@ -6,6 +6,7 @@ import 'package:arz8/Screens/Home/bloc/homebloc_bloc.dart';
 import 'package:arz8/model/country.dart';
 import 'package:arz8/services/methods.dart';
 import 'package:arz8/main.dart';
+import 'package:arz8/theme.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
@@ -78,6 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
 
+      // Body
       body: SingleChildScrollView(
         physics: AlwaysScrollableScrollPhysics(),
         child: Padding(
@@ -95,6 +97,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(8),
                     elevation: 3,
                     child: TextFormField(
+                      cursorErrorColor: Theme.of(context).colorScheme.error,
+                      cursorColor:
+                          isthemDark.value
+                              ? AppColors.whiteLight
+                              : AppColors.darkBlue,
                       onChanged: (value) {
                         if (value.trim().isEmpty) {
                           BlocProvider.of<HomeblocBloc>(
@@ -112,7 +119,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       decoration: InputDecoration(
                         border: OutlineInputBorder(borderSide: BorderSide.none),
                         contentPadding: EdgeInsets.symmetric(horizontal: 20),
-
                         hintText: ' Search for a country...',
                         hintStyle: Theme.of(
                           context,
@@ -132,6 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
+
                 //  Drop down
                 SizedBox(height: 30),
 
@@ -267,6 +274,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: 10),
 
+                // ListView
                 Expanded(
                   child: BlocBuilder<HomeblocBloc, HomeblocState>(
                     builder: (context, state) {
@@ -436,7 +444,17 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                         );
                       } else if (state is HomeError) {
-                        return Center(child: Text('Somthing Went Wrong'));
+                        return Center(
+                          child: Text(
+                            state.error,
+                            style: Theme.of(
+                              context,
+                            ).textTheme.bodyMedium!.copyWith(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
+                        );
                       }
                       return CupertinoActivityIndicator();
                     },

@@ -1,6 +1,7 @@
 import 'package:arz8/model/country.dart';
 import 'package:arz8/services/methods.dart';
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
@@ -15,7 +16,11 @@ class DetailScreenBloc extends Bloc<DetailScreenEvent, DetailScreenState> {
         try {
           emit(DetialScreenSuccess(event.countryModel));
         } catch (e) {
-          emit(DetialScreenError('Somthing went wrong'));
+          if (e is DioException) {
+            emit(DetialScreenError(e.message ?? "Unknown error"));
+          } else {
+            emit(DetialScreenError(e.toString()));
+          }
         }
       }
       if (event is BorderCountryClicked) {
@@ -24,7 +29,11 @@ class DetailScreenBloc extends Bloc<DetailScreenEvent, DetailScreenState> {
           final countries = await Services.codeserach(event.countryCode);
           emit(DetialScreenSuccess(countries.first));
         } catch (e) {
-          emit(DetialScreenError('Somthing went wrong'));
+          if (e is DioException) {
+            emit(DetialScreenError(e.message ?? "Unknown error"));
+          } else {
+            emit(DetialScreenError(e.toString()));
+          }
         }
       }
     });
