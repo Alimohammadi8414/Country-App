@@ -436,7 +436,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                         );
                       } else if (state is HomeError) {
-                        return Center(child: Text('Error'));
+                        return Center(child: Text('Somthing Went Wrong'));
                       }
                       return CupertinoActivityIndicator();
                     },

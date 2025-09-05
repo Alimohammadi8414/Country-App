@@ -1,7 +1,6 @@
 import 'package:arz8/Screens/Details/bloc/detail_screen_bloc.dart';
 import 'package:arz8/main.dart';
 import 'package:arz8/model/country.dart';
-import 'package:arz8/services/methods.dart';
 import 'package:arz8/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -285,7 +284,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               ),
                               SizedBox(width: 10),
                               Text(
-                                state.countryModel.tld.toString(),
+                                state.countryModel.tld!.join(', '),
                                 style: Theme.of(
                                   context,
                                 ).textTheme.bodyMedium!.copyWith(
